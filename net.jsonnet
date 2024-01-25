@@ -9,7 +9,7 @@ local string = import "string.jsonnet";
                                 function(x) iparts[x] << 8*(std.length(parts)-x-1)),
                   0),
     int_to_ip(int)::
-        std.join(".", std.makeArray(4, function(x) int >> 8*(4-x-1) & 255)),
+        std.join(".", std.makeArray(4, function(x) std.toString(int >> 8*(4-x-1) & 255))),
 
     cidr_to_list(cidr)::
         local s = std.split(cidr, "/");
